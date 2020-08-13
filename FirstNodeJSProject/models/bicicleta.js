@@ -34,13 +34,13 @@ Bicicleta.removeById = (aBiciId) => {
     }
 }
 
-
+/*
 //probando el modelo añadiendo dos bicis
 var a = new Bicicleta(1, 'rojo', 'montañera', [-17.782151, -63.175425]);
 var b = new Bicicleta(2, 'azul', 'urbana', [-17.785134, -63.194737]);
 
 Bicicleta.add(a);
 Bicicleta.add(b);
-
+*/
 //exportar el modulo para que se pueda usar el "modelo"
 module.exports = Bicicleta;
