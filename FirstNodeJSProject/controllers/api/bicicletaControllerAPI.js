@@ -1,20 +1,19 @@
 var Bicicleta = require('../../models/bicicleta');
 
 exports.bicicleta_list = (req, res) => {
-    res.status(200).json({
-        bicicletas: Bicicleta.allBicis
+    Bicicleta.find({}, function(err, bicis){
+        res.status(200).json({
+            bicicletas: bicis
+        });
     });
 }
 
 exports.bicicleta_create = (req, res) => {
-    var bici = new Bicicleta(req.body.id, req.body.color, req.body.modelo);
-    bici.ubicacion = [req.body.lat, req.body.lng];
-
-    Bicicleta.add(bici);
-
-    res.status(200).json({
-        bicicleta: bici
+    var bici = new Bicicleta({code: req.body.id, color: req.body.color, modelo: req.body.modelo, ubicacion: [req.body.lat, req.body.lng]});
+    bici.save( (err) => {
+        res.status(200).json(bici);
     });
+
 }
 
 exports.bicicleta_delete = (req, res) => {
